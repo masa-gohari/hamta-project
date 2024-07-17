@@ -1,0 +1,38 @@
+.nav-link {
+  width: fit-content;
+  text-align: center;
+  font-size: 16px;
+  color: #a0a1a7;
+  margin-right: 10px;
+  font-weight: bold;
+  cursor: pointer !important;
+
+  &:hover {
+    color: #4b67b0;
+  }
+}
+
+.nav-item {
+  text-align: center !important
+}
+
+.name-menu {
+  margin-right: 2px;
+}
+
+.activeMenu {
+  border-bottom: 2px solid #4b67b0;
+  color: #4b67b0;
+}
+
+.navbar {
+  background-color: white;
+  border: 1px solid #B3B3B3;
+}
+
+.svg{
+      fill:#a0a1a7 ;
+  &:hover{
+    fill:#4b67b0 ;
+  }
+}

@@ -1,0 +1,43 @@
+* {
+  font-family: 'BYekan' !important;
+}
+
+body {
+  margin: 0;
+  background-color: #F6F5F2 !important;
+}
+
+.card-header{
+  background-color: white !important;
+}
+
+.thead-table {
+  text-align: center;
+}
+
+.th-table {
+  font-size: 13px;
+  background-color: #fafafa !important;
+  border: 1px solid #e3e6e9;
+}
+
+.tr-table {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.title-name {
+  font-weight: bold;
+  margin: 5px 10px 0 0;
+}
+
+.form-select {
+  background-position: left 0.75rem center !important;
+}
+
+.form-select:focus {
+  box-shadow: none;
+  outline: none;
+}
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';

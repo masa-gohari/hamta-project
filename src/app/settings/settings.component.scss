@@ -1,0 +1,114 @@
+.title-setting {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.btn-vertical-menu {
+  width: 117px;
+  font-size: 13px;
+  font-weight: 700;
+  margin: 10px 0 0 0;
+  background-color: white;
+  color: #686D76;
+
+  &:focus {
+    border-bottom: 2px solid #7AB2B2;
+    box-shadow: none;
+    outline: none;
+    border-radius: 0;
+  }
+}
+
+.btn-vertical {
+  width: 162px;
+  font-size: 12px;
+  font-weight: 700;
+  margin: 10px 0 0 0;
+  background-color: white;
+  color: #686D76;
+}
+
+.btn-vertical.active {
+  background-color: white;
+  color: #7AB2B2;
+  border-bottom: 2px solid #7AB2B2;
+  border-radius: 0;
+}
+
+.card-body-style {
+  height: 600px;
+  width: 100%;
+}
+
+.card-body-container {
+  height: 560px;
+}
+
+.col-name-menu {
+  border-left: 1px solid #C7C8CC;
+  height: 560px;
+}
+
+.tab-content {
+  width: 100%;
+}
+
+.name-label {
+  width: 50px;
+  margin-top: 10px;
+  text-align: center;
+  font-weight: 600;
+  color: #686D76;
+}
+
+.name-label-bimeh {
+  width: 80px;
+  margin-top: 10px;
+  text-align: center;
+  font-weight: 600;
+  color: #686D76;
+}
+
+.name-label-bimeh-percent {
+  width: 130px;
+  margin-top: 10px;
+  text-align: center;
+  font-weight: 600;
+  color: #686D76;
+}
+
+.name-label-bimeh-name {
+  width: 90px;
+  margin-top: 10px;
+  text-align: center;
+  font-weight: 600;
+  color: #686D76;
+}
+
+.btn-save-bimeh {
+  border: 2px solid #e5e8eb;
+  border-radius: 10px;
+  width: 50px;
+  font-weight: 600;
+  margin-left: 10px;
+  color: #686D76;
+}
+
+.btn-add , .btn-save{
+  border: 2px solid #e5e8eb;
+  border-radius: 10px;
+  width: 50px;
+  font-weight: 600;
+  color: #686D76;
+}
+
+td {
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.activeTab {
+  color: #7AB2B2;
+  border-bottom: 2px solid #7AB2B2;
+  border-radius: 0;
+}

@@ -1,0 +1,30 @@
+.btn-add-patient {
+  background-color: #4535C1;
+  color: white;
+  font-weight: bold;
+
+  &:hover {
+    background-color: #96C9F4;
+    color: black;
+  }
+}
+
+.label-national-code {
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 22px;
+}
+
+.input-national-code {
+  margin: 0 auto 0 auto;
+
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+}
+.btn-bottom-modal{
+  width: 150px;
+  font-size: 16px;
+  font-weight: bold;
+}

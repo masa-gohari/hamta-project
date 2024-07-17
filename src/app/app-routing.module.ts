@@ -1,0 +1,33 @@
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from './login/login.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { PatientsListComponent } from './patients-list/patients-list.component';
+import { DefinitionServicesComponent } from './definition-services/definition-services.component';
+import { DentistsComponent } from './dentists/dentists.component';
+import { StockComponent } from './stock/stock.component';
+import { SettingsComponent } from './settings/settings.component';
+
+const routes: Routes = [
+  { path: 'login', component: LoginComponent },
+  {
+    path: 'navbar', component: NavbarComponent,
+    children: [
+      {path: 'dashboard', component: DashboardComponent},
+      {path: 'patientsList', component: PatientsListComponent},
+      {path: 'definitionServices', component: DefinitionServicesComponent},
+      {path: 'dentists', component: DentistsComponent},
+      {path: 'stock', component: StockComponent},
+      {path: 'settings', component: SettingsComponent},
+    ]
+  },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+];
+
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }

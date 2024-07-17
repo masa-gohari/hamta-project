@@ -1,0 +1,897 @@
+<div class="card">
+  <div class="card-header d-flex">
+    <div class="col-8 mt-2">
+      <p class="title-setting">تنظیمات</p>
+    </div>
+    <div class="col-4 d-flex justify-content-end mt-2">
+      <p class="title-setting">
+        تاریخ نسخه :
+      </p>
+      <p class="title-setting">
+        03/04/23
+      </p>
+    </div>
+  </div>
+  <div class="card-body card-body-style">
+    <div class="row">
+      <div class="col-2 col-name-menu">
+        <button class="btn btn-vertical-menu" [ngClass]="{'activeTab': isDefinitionBasicInfo}"
+          (click)="activeDefinitionBasicInfo()">تعریف اطلاعات پایه</button>
+        <button class="btn btn-vertical-menu" [ngClass]="{'activeTab': isSms}" (click)="activeSms()">سامانه
+          پیامکی</button>
+        <button class="btn btn-vertical-menu" [ngClass]="{'activeTab': isInsurance}" (click)="activeInsurance()">تعریف
+          بیمه</button>
+      </div>
+      <div class="col-10 d-flex" *ngIf="isDefinitionBasicInfo">
+        <div ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-pills flex-column" orientation="vertical">
+          <ng-container ngbNavItem="one">
+            <button class="btn-vertical" ngbNavLink>اطلاعات بانک ‌ها</button>
+            <ng-template ngbNavContent>
+              <div class="card" style="margin-right: 20px !important;">
+                <div class="card-body card-body-container">
+                  <div class="row">
+                    <div class="col-6 d-flex">
+                      <label class="name-label">نام</label>
+                      <input type="text" class="form-control input-form">
+                    </div>
+                    <div class="col-4 d-flex">
+                      <label class="name-label">کد</label>
+                      <input type="text" class="form-control input-form">
+                    </div>
+                    <div class="col-2 d-flex justify-content-center">
+                      <button class="btn btn-save">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                          class="bi bi-floppy" viewBox="0 0 16 16">
+                          <path d="M11 2H9v3h2z" />
+                          <path
+                            d="M1.5 0h11.586a1.5 1.5 0 0 1 1.06.44l1.415 1.414A1.5 1.5 0 0 1 16 2.914V14.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13A1.5 1.5 0 0 1 1.5 0M1 1.5v13a.5.5 0 0 0 .5.5H2v-4.5A1.5 1.5 0 0 1 3.5 9h9a1.5 1.5 0 0 1 1.5 1.5V15h.5a.5.5 0 0 0 .5-.5V2.914a.5.5 0 0 0-.146-.353l-1.415-1.415A.5.5 0 0 0 13.086 1H13v4.5A1.5 1.5 0 0 1 11.5 7h-7A1.5 1.5 0 0 1 3 5.5V1H1.5a.5.5 0 0 0-.5.5m3 4a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5V1H4zM3 15h10v-4.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5z" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="row mt-3 mb-3">
+                    <div>
+                      <table class="table table-striped table-hover">
+                        <thead class="thead-table">
+                          <tr>
+                            <th class="th-table" scope="col">کد</th>
+                            <th class="th-table" scope="col">نام</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr class="text-center tr-table">
+                            <th scope="row">1</th>
+                            <td>بانک ملی ایران</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+          </ng-container>
+          <ng-container ngbNavItem="two">
+            <button class="btn-vertical" ngbNavLink>اطلاعات قراردادها</button>
+            <ng-template ngbNavContent>
+              <div class="card" style="margin-right: 20px !important;">
+                <div class="card-body card-body-container">
+                  <div class="row">
+                    <div class="col-6 d-flex">
+                      <label class="name-label">نام</label>
+                      <input type="text" class="form-control input-form">
+                    </div>
+                    <div class="col-4 d-flex">
+                      <label class="name-label">کد</label>
+                      <input type="text" class="form-control input-form">
+                    </div>
+                    <div class="col-2 d-flex justify-content-center">
+                      <button class="btn btn-save">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                          class="bi bi-floppy" viewBox="0 0 16 16">
+                          <path d="M11 2H9v3h2z" />
+                          <path
+                            d="M1.5 0h11.586a1.5 1.5 0 0 1 1.06.44l1.415 1.414A1.5 1.5 0 0 1 16 2.914V14.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13A1.5 1.5 0 0 1 1.5 0M1 1.5v13a.5.5 0 0 0 .5.5H2v-4.5A1.5 1.5 0 0 1 3.5 9h9a1.5 1.5 0 0 1 1.5 1.5V15h.5a.5.5 0 0 0 .5-.5V2.914a.5.5 0 0 0-.146-.353l-1.415-1.415A.5.5 0 0 0 13.086 1H13v4.5A1.5 1.5 0 0 1 11.5 7h-7A1.5 1.5 0 0 1 3 5.5V1H1.5a.5.5 0 0 0-.5.5m3 4a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5V1H4zM3 15h10v-4.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5z" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="row mt-3 mb-3">
+                    <div>
+                      <table class="table table-striped table-hover">
+                        <thead class="thead-table">
+                          <tr>
+                            <th class="th-table" scope="col">کد</th>
+                            <th class="th-table" scope="col">نام</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr class="text-center tr-table">
+                            <th scope="row">1</th>
+                            <td>بانک ملی ایران</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+          </ng-container>
+          <ng-container ngbNavItem="three">
+            <button class="btn-vertical" ngbNavLink>اطلاعات جنسیت</button>
+            <ng-template ngbNavContent>
+              <div class="card" style="margin-right: 20px !important;">
+                <div class="card-body card-body-container">
+                  <div class="row">
+                    <div class="col-6 d-flex">
+                      <label class="name-label">نام</label>
+                      <input type="text" class="form-control input-form">
+                    </div>
+                    <div class="col-4 d-flex">
+                      <label class="name-label">کد</label>
+                      <input type="text" class="form-control input-form">
+                    </div>
+                    <div class="col-2 d-flex justify-content-center">
+                      <button class="btn btn-save">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                          class="bi bi-floppy" viewBox="0 0 16 16">
+                          <path d="M11 2H9v3h2z" />
+                          <path
+                            d="M1.5 0h11.586a1.5 1.5 0 0 1 1.06.44l1.415 1.414A1.5 1.5 0 0 1 16 2.914V14.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13A1.5 1.5 0 0 1 1.5 0M1 1.5v13a.5.5 0 0 0 .5.5H2v-4.5A1.5 1.5 0 0 1 3.5 9h9a1.5 1.5 0 0 1 1.5 1.5V15h.5a.5.5 0 0 0 .5-.5V2.914a.5.5 0 0 0-.146-.353l-1.415-1.415A.5.5 0 0 0 13.086 1H13v4.5A1.5 1.5 0 0 1 11.5 7h-7A1.5 1.5 0 0 1 3 5.5V1H1.5a.5.5 0 0 0-.5.5m3 4a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5V1H4zM3 15h10v-4.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5z" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="row mt-3 mb-3">
+                    <div>
+                      <table class="table table-striped table-hover">
+                        <thead class="thead-table">
+                          <tr>
+                            <th class="th-table" scope="col">کد</th>
+                            <th class="th-table" scope="col">نام</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr class="text-center tr-table">
+                            <th scope="row">1</th>
+                            <td>بانک ملی ایران</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+          </ng-container>
+          <ng-container ngbNavItem="four">
+            <button class="btn-vertical" ngbNavLink>اطلاعات بیمه </button>
+            <ng-template ngbNavContent>
+              <div class="card" style="margin-right: 20px !important;">
+                <div class="card-body card-body-container">
+                  <div class="row">
+                    <div class="col-6 d-flex">
+                      <label class="name-label">نام</label>
+                      <input type="text" class="form-control input-form">
+                    </div>
+                    <div class="col-4 d-flex">
+                      <label class="name-label">کد</label>
+                      <input type="text" class="form-control input-form">
+                    </div>
+                    <div class="col-2 d-flex justify-content-center">
+                      <button class="btn btn-save">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                          class="bi bi-floppy" viewBox="0 0 16 16">
+                          <path d="M11 2H9v3h2z" />
+                          <path
+                            d="M1.5 0h11.586a1.5 1.5 0 0 1 1.06.44l1.415 1.414A1.5 1.5 0 0 1 16 2.914V14.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13A1.5 1.5 0 0 1 1.5 0M1 1.5v13a.5.5 0 0 0 .5.5H2v-4.5A1.5 1.5 0 0 1 3.5 9h9a1.5 1.5 0 0 1 1.5 1.5V15h.5a.5.5 0 0 0 .5-.5V2.914a.5.5 0 0 0-.146-.353l-1.415-1.415A.5.5 0 0 0 13.086 1H13v4.5A1.5 1.5 0 0 1 11.5 7h-7A1.5 1.5 0 0 1 3 5.5V1H1.5a.5.5 0 0 0-.5.5m3 4a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5V1H4zM3 15h10v-4.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5z" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="row mt-3 mb-3">
+                    <div>
+                      <table class="table table-striped table-hover">
+                        <thead class="thead-table">
+                          <tr>
+                            <th class="th-table" scope="col">کد</th>
+                            <th class="th-table" scope="col">نام</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr class="text-center tr-table">
+                            <th scope="row">1</th>
+                            <td>بانک ملی ایران</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+          </ng-container>
+          <ng-container ngbNavItem="five">
+            <button class="btn-vertical" ngbNavLink>اطلاعات درجه نظامی </button>
+            <ng-template ngbNavContent>
+              <div class="card" style="margin-right: 20px !important;">
+                <div class="card-body card-body-container">
+                  <div class="row">
+                    <div class="col-6 d-flex">
+                      <label class="name-label">نام</label>
+                      <input type="text" class="form-control input-form">
+                    </div>
+                    <div class="col-4 d-flex">
+                      <label class="name-label">کد</label>
+                      <input type="text" class="form-control input-form">
+                    </div>
+                    <div class="col-2 d-flex justify-content-center">
+                      <button class="btn btn-save">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                          class="bi bi-floppy" viewBox="0 0 16 16">
+                          <path d="M11 2H9v3h2z" />
+                          <path
+                            d="M1.5 0h11.586a1.5 1.5 0 0 1 1.06.44l1.415 1.414A1.5 1.5 0 0 1 16 2.914V14.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13A1.5 1.5 0 0 1 1.5 0M1 1.5v13a.5.5 0 0 0 .5.5H2v-4.5A1.5 1.5 0 0 1 3.5 9h9a1.5 1.5 0 0 1 1.5 1.5V15h.5a.5.5 0 0 0 .5-.5V2.914a.5.5 0 0 0-.146-.353l-1.415-1.415A.5.5 0 0 0 13.086 1H13v4.5A1.5 1.5 0 0 1 11.5 7h-7A1.5 1.5 0 0 1 3 5.5V1H1.5a.5.5 0 0 0-.5.5m3 4a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5V1H4zM3 15h10v-4.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5z" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="row mt-3 mb-3">
+                    <div>
+                      <table class="table table-striped table-hover">
+                        <thead class="thead-table">
+                          <tr>
+                            <th class="th-table" scope="col">کد</th>
+                            <th class="th-table" scope="col">نام</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr class="text-center tr-table">
+                            <th scope="row">1</th>
+                            <td>بانک ملی ایران</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+          </ng-container>
+          <ng-container ngbNavItem="six">
+            <button class="btn-vertical" ngbNavLink> اطلاعات نوع تخصص</button>
+            <ng-template ngbNavContent>
+
+            </ng-template>
+          </ng-container>
+          <ng-container ngbNavItem="seven">
+            <button class="btn-vertical" ngbNavLink> اطلاعات وضعیت تخصص</button>
+            <ng-template ngbNavContent>
+              <div class="card" style="margin-right: 20px !important;">
+                <div class="card-body card-body-container">
+                  <div class="row">
+                    <div class="col-6 d-flex">
+                      <label class="name-label">نام</label>
+                      <input type="text" class="form-control input-form">
+                    </div>
+                    <div class="col-4 d-flex">
+                      <label class="name-label">کد</label>
+                      <input type="text" class="form-control input-form">
+                    </div>
+                    <div class="col-2 d-flex justify-content-center">
+                      <button class="btn btn-save">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                          class="bi bi-floppy" viewBox="0 0 16 16">
+                          <path d="M11 2H9v3h2z" />
+                          <path
+                            d="M1.5 0h11.586a1.5 1.5 0 0 1 1.06.44l1.415 1.414A1.5 1.5 0 0 1 16 2.914V14.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13A1.5 1.5 0 0 1 1.5 0M1 1.5v13a.5.5 0 0 0 .5.5H2v-4.5A1.5 1.5 0 0 1 3.5 9h9a1.5 1.5 0 0 1 1.5 1.5V15h.5a.5.5 0 0 0 .5-.5V2.914a.5.5 0 0 0-.146-.353l-1.415-1.415A.5.5 0 0 0 13.086 1H13v4.5A1.5 1.5 0 0 1 11.5 7h-7A1.5 1.5 0 0 1 3 5.5V1H1.5a.5.5 0 0 0-.5.5m3 4a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5V1H4zM3 15h10v-4.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5z" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="row mt-3 mb-3">
+                    <div>
+                      <table class="table table-striped table-hover">
+                        <thead class="thead-table">
+                          <tr>
+                            <th class="th-table" scope="col">کد</th>
+                            <th class="th-table" scope="col">نام</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr class="text-center tr-table">
+                            <th scope="row">1</th>
+                            <td>بانک ملی ایران</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+          </ng-container>
+          <ng-container ngbNavItem="eight">
+            <button class="btn-vertical" ngbNavLink> اطلاعات بیماری ها</button>
+            <ng-template ngbNavContent>
+              <div class="card" style="margin-right: 20px !important;">
+                <div class="card-body card-body-container">
+                  <div class="row">
+                    <div class="col-6 d-flex">
+                      <label class="name-label">نام</label>
+                      <input type="text" class="form-control input-form">
+                    </div>
+                    <div class="col-4 d-flex">
+                      <label class="name-label">کد</label>
+                      <input type="text" class="form-control input-form">
+                    </div>
+                    <div class="col-2 d-flex justify-content-center">
+                      <button class="btn btn-save">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                          class="bi bi-floppy" viewBox="0 0 16 16">
+                          <path d="M11 2H9v3h2z" />
+                          <path
+                            d="M1.5 0h11.586a1.5 1.5 0 0 1 1.06.44l1.415 1.414A1.5 1.5 0 0 1 16 2.914V14.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13A1.5 1.5 0 0 1 1.5 0M1 1.5v13a.5.5 0 0 0 .5.5H2v-4.5A1.5 1.5 0 0 1 3.5 9h9a1.5 1.5 0 0 1 1.5 1.5V15h.5a.5.5 0 0 0 .5-.5V2.914a.5.5 0 0 0-.146-.353l-1.415-1.415A.5.5 0 0 0 13.086 1H13v4.5A1.5 1.5 0 0 1 11.5 7h-7A1.5 1.5 0 0 1 3 5.5V1H1.5a.5.5 0 0 0-.5.5m3 4a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5V1H4zM3 15h10v-4.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5z" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="row mt-3 mb-3">
+                    <div>
+                      <table class="table table-striped table-hover">
+                        <thead class="thead-table">
+                          <tr>
+                            <th class="th-table" scope="col">کد</th>
+                            <th class="th-table" scope="col">نام</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr class="text-center tr-table">
+                            <th scope="row">1</th>
+                            <td>بانک ملی ایران</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+          </ng-container>
+          <ng-container ngbNavItem="nine">
+            <button class="btn-vertical" ngbNavLink>اطلاعات گروه بندی سرویس</button>
+            <ng-template ngbNavContent>
+              <div class="card" style="margin-right: 20px !important;">
+                <div class="card-body card-body-container">
+                  <div class="row">
+                    <div class="col-6 d-flex">
+                      <label class="name-label">نام</label>
+                      <input type="text" class="form-control input-form">
+                    </div>
+                    <div class="col-4 d-flex">
+                      <label class="name-label">کد</label>
+                      <input type="text" class="form-control input-form">
+                    </div>
+                    <div class="col-2 d-flex justify-content-center">
+                      <button class="btn btn-save">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                          class="bi bi-floppy" viewBox="0 0 16 16">
+                          <path d="M11 2H9v3h2z" />
+                          <path
+                            d="M1.5 0h11.586a1.5 1.5 0 0 1 1.06.44l1.415 1.414A1.5 1.5 0 0 1 16 2.914V14.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13A1.5 1.5 0 0 1 1.5 0M1 1.5v13a.5.5 0 0 0 .5.5H2v-4.5A1.5 1.5 0 0 1 3.5 9h9a1.5 1.5 0 0 1 1.5 1.5V15h.5a.5.5 0 0 0 .5-.5V2.914a.5.5 0 0 0-.146-.353l-1.415-1.415A.5.5 0 0 0 13.086 1H13v4.5A1.5 1.5 0 0 1 11.5 7h-7A1.5 1.5 0 0 1 3 5.5V1H1.5a.5.5 0 0 0-.5.5m3 4a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5V1H4zM3 15h10v-4.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5z" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="row mt-3 mb-3">
+                    <div>
+                      <table class="table table-striped table-hover">
+                        <thead class="thead-table">
+                          <tr>
+                            <th class="th-table" scope="col">کد</th>
+                            <th class="th-table" scope="col">نام</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr class="text-center tr-table">
+                            <th scope="row">1</th>
+                            <td>بانک ملی ایران</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+          </ng-container>
+          <ng-container ngbNavItem="ten">
+            <button class="btn-vertical" ngbNavLink>اطلاعات نوع سرویس</button>
+            <ng-template ngbNavContent>
+              <div class="card" style="margin-right: 20px !important;">
+                <div class="card-body card-body-container">
+                  <div class="row">
+                    <div class="col-6 d-flex">
+                      <label class="name-label">نام</label>
+                      <input type="text" class="form-control input-form">
+                    </div>
+                    <div class="col-4 d-flex">
+                      <label class="name-label">کد</label>
+                      <input type="text" class="form-control input-form">
+                    </div>
+                    <div class="col-2 d-flex justify-content-center">
+                      <button class="btn btn-save">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                          class="bi bi-floppy" viewBox="0 0 16 16">
+                          <path d="M11 2H9v3h2z" />
+                          <path
+                            d="M1.5 0h11.586a1.5 1.5 0 0 1 1.06.44l1.415 1.414A1.5 1.5 0 0 1 16 2.914V14.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13A1.5 1.5 0 0 1 1.5 0M1 1.5v13a.5.5 0 0 0 .5.5H2v-4.5A1.5 1.5 0 0 1 3.5 9h9a1.5 1.5 0 0 1 1.5 1.5V15h.5a.5.5 0 0 0 .5-.5V2.914a.5.5 0 0 0-.146-.353l-1.415-1.415A.5.5 0 0 0 13.086 1H13v4.5A1.5 1.5 0 0 1 11.5 7h-7A1.5 1.5 0 0 1 3 5.5V1H1.5a.5.5 0 0 0-.5.5m3 4a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5V1H4zM3 15h10v-4.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5z" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="row mt-3 mb-3">
+                    <div>
+                      <table class="table table-striped table-hover">
+                        <thead class="thead-table">
+                          <tr>
+                            <th class="th-table" scope="col">کد</th>
+                            <th class="th-table" scope="col">نام</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr class="text-center tr-table">
+                            <th scope="row">1</th>
+                            <td>بانک ملی ایران</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+          </ng-container>
+          <ng-container ngbNavItem="elevan">
+            <button class="btn-vertical" ngbNavLink>اطلاعات انبارها</button>
+            <ng-template ngbNavContent>
+              <div class="card" style="margin-right: 20px !important;">
+                <div class="card-body card-body-container">
+                  <div class="row">
+                    <div class="col-6 d-flex">
+                      <label class="name-label">نام</label>
+                      <input type="text" class="form-control input-form">
+                    </div>
+                    <div class="col-4 d-flex">
+                      <label class="name-label">کد</label>
+                      <input type="text" class="form-control input-form">
+                    </div>
+                    <div class="col-2 d-flex justify-content-center">
+                      <button class="btn btn-save">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                          class="bi bi-floppy" viewBox="0 0 16 16">
+                          <path d="M11 2H9v3h2z" />
+                          <path
+                            d="M1.5 0h11.586a1.5 1.5 0 0 1 1.06.44l1.415 1.414A1.5 1.5 0 0 1 16 2.914V14.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13A1.5 1.5 0 0 1 1.5 0M1 1.5v13a.5.5 0 0 0 .5.5H2v-4.5A1.5 1.5 0 0 1 3.5 9h9a1.5 1.5 0 0 1 1.5 1.5V15h.5a.5.5 0 0 0 .5-.5V2.914a.5.5 0 0 0-.146-.353l-1.415-1.415A.5.5 0 0 0 13.086 1H13v4.5A1.5 1.5 0 0 1 11.5 7h-7A1.5 1.5 0 0 1 3 5.5V1H1.5a.5.5 0 0 0-.5.5m3 4a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5V1H4zM3 15h10v-4.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5z" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="row mt-3 mb-3">
+                    <div>
+                      <table class="table table-striped table-hover">
+                        <thead class="thead-table">
+                          <tr>
+                            <th class="th-table" scope="col">کد</th>
+                            <th class="th-table" scope="col">نام</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr class="text-center tr-table">
+                            <th scope="row">1</th>
+                            <td>بانک ملی ایران</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+          </ng-container>
+        </div>
+        <div [ngbNavOutlet]="nav" class="ms-4"></div>
+      </div>
+      <div class="col-10 d-flex" *ngIf="isInsurance">
+        <div ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-pills flex-column" orientation="vertical">
+          <ng-container ngbNavItem="one">
+            <button class="btn-vertical" ngbNavLink> تامین اجتماعی</button>
+            <ng-template ngbNavContent>
+              <div class="card" style="margin-right: 20px !important;">
+                <div class="card-body card-body-container">
+                  <div class="row mt-3 mb-2">
+                    <div class="col-6"></div>
+                    <div class="col-6 d-flex justify-content-end">
+                      <button class="btn btn-save-bimeh">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                          class="bi bi-floppy" viewBox="0 0 16 16">
+                          <path d="M11 2H9v3h2z" />
+                          <path
+                            d="M1.5 0h11.586a1.5 1.5 0 0 1 1.06.44l1.415 1.414A1.5 1.5 0 0 1 16 2.914V14.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13A1.5 1.5 0 0 1 1.5 0M1 1.5v13a.5.5 0 0 0 .5.5H2v-4.5A1.5 1.5 0 0 1 3.5 9h9a1.5 1.5 0 0 1 1.5 1.5V15h.5a.5.5 0 0 0 .5-.5V2.914a.5.5 0 0 0-.146-.353l-1.415-1.415A.5.5 0 0 0 13.086 1H13v4.5A1.5 1.5 0 0 1 11.5 7h-7A1.5 1.5 0 0 1 3 5.5V1H1.5a.5.5 0 0 0-.5.5m3 4a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5V1H4zM3 15h10v-4.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5z" />
+                        </svg>
+                      </button>
+                      <button class="btn btn-add">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                          class="bi bi-plus-lg" viewBox="0 0 16 16">
+                          <path fill-rule="evenodd"
+                            d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col-5 d-flex">
+                      <label class="name-label-bimeh">کد بیمه</label>
+                      <input type="text" class="form-control input-form w-75">
+                    </div>
+                    <div class="col-7"></div>
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col-9 d-flex">
+                      <label class="name-label-bimeh-name">نام بیمه</label>
+                      <input type="text" class="form-control input-form">
+                    </div>
+                    <div class="col-3 d-flex justify-content-center">
+                    </div>
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col-5 d-flex justify-content-start">
+                      <label class="name-label-bimeh-percent">فرانشیز سرپایی ٪ </label>
+                      <input type="text" class="form-control input-form w-75">
+                    </div>
+                    <div class="col-5 d-flex justify-content-start">
+                      <label class="name-label-bimeh-percent"> درصد بیمه ٪ </label>
+                      <input type="text" class="form-control input-form w-75">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+          </ng-container>
+          <ng-container ngbNavItem="two">
+            <button class="btn-vertical" ngbNavLink> خدمات درمانی</button>
+            <ng-template ngbNavContent>
+              <div class="card" style="margin-right: 20px !important;">
+                <div class="card-body card-body-container">
+                  <div class="row mt-3 mb-2">
+                    <div class="col-6"></div>
+                    <div class="col-6 d-flex justify-content-end">
+                      <button class="btn btn-save-bimeh">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                          class="bi bi-floppy" viewBox="0 0 16 16">
+                          <path d="M11 2H9v3h2z" />
+                          <path
+                            d="M1.5 0h11.586a1.5 1.5 0 0 1 1.06.44l1.415 1.414A1.5 1.5 0 0 1 16 2.914V14.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13A1.5 1.5 0 0 1 1.5 0M1 1.5v13a.5.5 0 0 0 .5.5H2v-4.5A1.5 1.5 0 0 1 3.5 9h9a1.5 1.5 0 0 1 1.5 1.5V15h.5a.5.5 0 0 0 .5-.5V2.914a.5.5 0 0 0-.146-.353l-1.415-1.415A.5.5 0 0 0 13.086 1H13v4.5A1.5 1.5 0 0 1 11.5 7h-7A1.5 1.5 0 0 1 3 5.5V1H1.5a.5.5 0 0 0-.5.5m3 4a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5V1H4zM3 15h10v-4.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5z" />
+                        </svg>
+                      </button>
+                      <button class="btn btn-add">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                          class="bi bi-plus-lg" viewBox="0 0 16 16">
+                          <path fill-rule="evenodd"
+                            d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col-5 d-flex">
+                      <label class="name-label-bimeh">کد بیمه</label>
+                      <input type="text" class="form-control input-form w-75">
+                    </div>
+                    <div class="col-7"></div>
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col-9 d-flex">
+                      <label class="name-label-bimeh-name">نام بیمه</label>
+                      <input type="text" class="form-control input-form">
+                    </div>
+                    <div class="col-3 d-flex justify-content-center">
+                    </div>
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col-5 d-flex justify-content-start">
+                      <label class="name-label-bimeh-percent">فرانشیز سرپایی ٪ </label>
+                      <input type="text" class="form-control input-form w-75">
+                    </div>
+                    <div class="col-5 d-flex justify-content-start">
+                      <label class="name-label-bimeh-percent"> درصد بیمه ٪ </label>
+                      <input type="text" class="form-control input-form w-75">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+          </ng-container>
+          <ng-container ngbNavItem="three">
+            <button class="btn-vertical" ngbNavLink> خدمات درمانی نیروهای مسلح</button>
+            <ng-template ngbNavContent>
+              <div class="card" style="margin-right: 20px !important;">
+                <div class="card-body card-body-container">
+                  <div class="row mt-3 mb-2">
+                    <div class="col-6"></div>
+                    <div class="col-6 d-flex justify-content-end">
+                      <button class="btn btn-save-bimeh">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                          class="bi bi-floppy" viewBox="0 0 16 16">
+                          <path d="M11 2H9v3h2z" />
+                          <path
+                            d="M1.5 0h11.586a1.5 1.5 0 0 1 1.06.44l1.415 1.414A1.5 1.5 0 0 1 16 2.914V14.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13A1.5 1.5 0 0 1 1.5 0M1 1.5v13a.5.5 0 0 0 .5.5H2v-4.5A1.5 1.5 0 0 1 3.5 9h9a1.5 1.5 0 0 1 1.5 1.5V15h.5a.5.5 0 0 0 .5-.5V2.914a.5.5 0 0 0-.146-.353l-1.415-1.415A.5.5 0 0 0 13.086 1H13v4.5A1.5 1.5 0 0 1 11.5 7h-7A1.5 1.5 0 0 1 3 5.5V1H1.5a.5.5 0 0 0-.5.5m3 4a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5V1H4zM3 15h10v-4.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5z" />
+                        </svg>
+                      </button>
+                      <button class="btn btn-add">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                          class="bi bi-plus-lg" viewBox="0 0 16 16">
+                          <path fill-rule="evenodd"
+                            d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col-5 d-flex">
+                      <label class="name-label-bimeh">کد بیمه</label>
+                      <input type="text" class="form-control input-form w-75">
+                    </div>
+                    <div class="col-7"></div>
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col-9 d-flex">
+                      <label class="name-label-bimeh-name">نام بیمه</label>
+                      <input type="text" class="form-control input-form">
+                    </div>
+                    <div class="col-3 d-flex justify-content-center">
+                    </div>
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col-5 d-flex justify-content-start">
+                      <label class="name-label-bimeh-percent">فرانشیز سرپایی ٪ </label>
+                      <input type="text" class="form-control input-form w-75">
+                    </div>
+                    <div class="col-5 d-flex justify-content-start">
+                      <label class="name-label-bimeh-percent"> درصد بیمه ٪ </label>
+                      <input type="text" class="form-control input-form w-75">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+          </ng-container>
+          <ng-container ngbNavItem="four">
+            <button class="btn-vertical" ngbNavLink> کیمته امداد امام خمینی </button>
+            <ng-template ngbNavContent>
+              <div class="card" style="margin-right: 20px !important;">
+                <div class="card-body card-body-container">
+                  <div class="row mt-3 mb-2">
+                    <div class="col-6"></div>
+                    <div class="col-6 d-flex justify-content-end">
+                      <button class="btn btn-save-bimeh">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                          class="bi bi-floppy" viewBox="0 0 16 16">
+                          <path d="M11 2H9v3h2z" />
+                          <path
+                            d="M1.5 0h11.586a1.5 1.5 0 0 1 1.06.44l1.415 1.414A1.5 1.5 0 0 1 16 2.914V14.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13A1.5 1.5 0 0 1 1.5 0M1 1.5v13a.5.5 0 0 0 .5.5H2v-4.5A1.5 1.5 0 0 1 3.5 9h9a1.5 1.5 0 0 1 1.5 1.5V15h.5a.5.5 0 0 0 .5-.5V2.914a.5.5 0 0 0-.146-.353l-1.415-1.415A.5.5 0 0 0 13.086 1H13v4.5A1.5 1.5 0 0 1 11.5 7h-7A1.5 1.5 0 0 1 3 5.5V1H1.5a.5.5 0 0 0-.5.5m3 4a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5V1H4zM3 15h10v-4.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5z" />
+                        </svg>
+                      </button>
+                      <button class="btn btn-add">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                          class="bi bi-plus-lg" viewBox="0 0 16 16">
+                          <path fill-rule="evenodd"
+                            d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col-5 d-flex">
+                      <label class="name-label-bimeh">کد بیمه</label>
+                      <input type="text" class="form-control input-form w-75">
+                    </div>
+                    <div class="col-7"></div>
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col-9 d-flex">
+                      <label class="name-label-bimeh-name">نام بیمه</label>
+                      <input type="text" class="form-control input-form">
+                    </div>
+                    <div class="col-3 d-flex justify-content-center">
+                    </div>
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col-5 d-flex justify-content-start">
+                      <label class="name-label-bimeh-percent">فرانشیز سرپایی ٪ </label>
+                      <input type="text" class="form-control input-form w-75">
+                    </div>
+                    <div class="col-5 d-flex justify-content-start">
+                      <label class="name-label-bimeh-percent"> درصد بیمه ٪ </label>
+                      <input type="text" class="form-control input-form w-75">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+          </ng-container>
+          <ng-container ngbNavItem="five">
+            <button class="btn-vertical" ngbNavLink> شهرداری ها</button>
+            <ng-template ngbNavContent>
+              <div class="card" style="margin-right: 20px !important;">
+                <div class="card-body card-body-container">
+                  <div class="row mt-3 mb-2">
+                    <div class="col-6"></div>
+                    <div class="col-6 d-flex justify-content-end">
+                      <button class="btn btn-save-bimeh">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                          class="bi bi-floppy" viewBox="0 0 16 16">
+                          <path d="M11 2H9v3h2z" />
+                          <path
+                            d="M1.5 0h11.586a1.5 1.5 0 0 1 1.06.44l1.415 1.414A1.5 1.5 0 0 1 16 2.914V14.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13A1.5 1.5 0 0 1 1.5 0M1 1.5v13a.5.5 0 0 0 .5.5H2v-4.5A1.5 1.5 0 0 1 3.5 9h9a1.5 1.5 0 0 1 1.5 1.5V15h.5a.5.5 0 0 0 .5-.5V2.914a.5.5 0 0 0-.146-.353l-1.415-1.415A.5.5 0 0 0 13.086 1H13v4.5A1.5 1.5 0 0 1 11.5 7h-7A1.5 1.5 0 0 1 3 5.5V1H1.5a.5.5 0 0 0-.5.5m3 4a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5V1H4zM3 15h10v-4.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5z" />
+                        </svg>
+                      </button>
+                      <button class="btn btn-add">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                          class="bi bi-plus-lg" viewBox="0 0 16 16">
+                          <path fill-rule="evenodd"
+                            d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col-5 d-flex">
+                      <label class="name-label-bimeh">کد بیمه</label>
+                      <input type="text" class="form-control input-form w-75">
+                    </div>
+                    <div class="col-7"></div>
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col-9 d-flex">
+                      <label class="name-label-bimeh-name">نام بیمه</label>
+                      <input type="text" class="form-control input-form">
+                    </div>
+                    <div class="col-3 d-flex justify-content-center">
+                    </div>
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col-5 d-flex justify-content-start">
+                      <label class="name-label-bimeh-percent">فرانشیز سرپایی ٪ </label>
+                      <input type="text" class="form-control input-form w-75">
+                    </div>
+                    <div class="col-5 d-flex justify-content-start">
+                      <label class="name-label-bimeh-percent"> درصد بیمه ٪ </label>
+                      <input type="text" class="form-control input-form w-75">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+          </ng-container>
+          <ng-container ngbNavItem="six">
+            <button class="btn-vertical" ngbNavLink> بانک تجارت</button>
+            <ng-template ngbNavContent>
+
+            </ng-template>
+          </ng-container>
+          <ng-container ngbNavItem="seven">
+            <button class="btn-vertical" ngbNavLink> بیمه آسیا</button>
+            <ng-template ngbNavContent>
+              <div class="card" style="margin-right: 20px !important;">
+                <div class="card-body card-body-container">
+                  <div class="row mt-3 mb-2">
+                    <div class="col-6"></div>
+                    <div class="col-6 d-flex justify-content-end">
+                      <button class="btn btn-save-bimeh">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                          class="bi bi-floppy" viewBox="0 0 16 16">
+                          <path d="M11 2H9v3h2z" />
+                          <path
+                            d="M1.5 0h11.586a1.5 1.5 0 0 1 1.06.44l1.415 1.414A1.5 1.5 0 0 1 16 2.914V14.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13A1.5 1.5 0 0 1 1.5 0M1 1.5v13a.5.5 0 0 0 .5.5H2v-4.5A1.5 1.5 0 0 1 3.5 9h9a1.5 1.5 0 0 1 1.5 1.5V15h.5a.5.5 0 0 0 .5-.5V2.914a.5.5 0 0 0-.146-.353l-1.415-1.415A.5.5 0 0 0 13.086 1H13v4.5A1.5 1.5 0 0 1 11.5 7h-7A1.5 1.5 0 0 1 3 5.5V1H1.5a.5.5 0 0 0-.5.5m3 4a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5V1H4zM3 15h10v-4.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5z" />
+                        </svg>
+                      </button>
+                      <button class="btn btn-add">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                          class="bi bi-plus-lg" viewBox="0 0 16 16">
+                          <path fill-rule="evenodd"
+                            d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col-5 d-flex">
+                      <label class="name-label-bimeh">کد بیمه</label>
+                      <input type="text" class="form-control input-form w-75">
+                    </div>
+                    <div class="col-7"></div>
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col-9 d-flex">
+                      <label class="name-label-bimeh-name">نام بیمه</label>
+                      <input type="text" class="form-control input-form">
+                    </div>
+                    <div class="col-3 d-flex justify-content-center">
+                    </div>
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col-5 d-flex justify-content-start">
+                      <label class="name-label-bimeh-percent">فرانشیز سرپایی ٪ </label>
+                      <input type="text" class="form-control input-form w-75">
+                    </div>
+                    <div class="col-5 d-flex justify-content-start">
+                      <label class="name-label-bimeh-percent"> درصد بیمه ٪ </label>
+                      <input type="text" class="form-control input-form w-75">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+          </ng-container>
+          <ng-container ngbNavItem="eight">
+            <button class="btn-vertical" ngbNavLink> بیمه آتیه سازان حافظ</button>
+            <ng-template ngbNavContent>
+              <div class="card" style="margin-right: 20px !important;">
+                <div class="card-body card-body-container">
+                  <div class="row mt-3 mb-2">
+                    <div class="col-6"></div>
+                    <div class="col-6 d-flex justify-content-end">
+                      <button class="btn btn-save-bimeh">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                          class="bi bi-floppy" viewBox="0 0 16 16">
+                          <path d="M11 2H9v3h2z" />
+                          <path
+                            d="M1.5 0h11.586a1.5 1.5 0 0 1 1.06.44l1.415 1.414A1.5 1.5 0 0 1 16 2.914V14.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13A1.5 1.5 0 0 1 1.5 0M1 1.5v13a.5.5 0 0 0 .5.5H2v-4.5A1.5 1.5 0 0 1 3.5 9h9a1.5 1.5 0 0 1 1.5 1.5V15h.5a.5.5 0 0 0 .5-.5V2.914a.5.5 0 0 0-.146-.353l-1.415-1.415A.5.5 0 0 0 13.086 1H13v4.5A1.5 1.5 0 0 1 11.5 7h-7A1.5 1.5 0 0 1 3 5.5V1H1.5a.5.5 0 0 0-.5.5m3 4a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5V1H4zM3 15h10v-4.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5z" />
+                        </svg>
+                      </button>
+                      <button class="btn btn-add">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                          class="bi bi-plus-lg" viewBox="0 0 16 16">
+                          <path fill-rule="evenodd"
+                            d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col-5 d-flex">
+                      <label class="name-label-bimeh">کد بیمه</label>
+                      <input type="text" class="form-control input-form w-75">
+                    </div>
+                    <div class="col-7"></div>
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col-9 d-flex">
+                      <label class="name-label-bimeh-name">نام بیمه</label>
+                      <input type="text" class="form-control input-form">
+                    </div>
+                    <div class="col-3 d-flex justify-content-center">
+                    </div>
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col-5 d-flex justify-content-start">
+                      <label class="name-label-bimeh-percent">فرانشیز سرپایی ٪ </label>
+                      <input type="text" class="form-control input-form w-75">
+                    </div>
+                    <div class="col-5 d-flex justify-content-start">
+                      <label class="name-label-bimeh-percent"> درصد بیمه ٪ </label>
+                      <input type="text" class="form-control input-form w-75">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+          </ng-container>
+        </div>
+        <div [ngbNavOutlet]="nav" class="ms-4"></div>
+      </div>
+    </div>
+  </div>
+</div>

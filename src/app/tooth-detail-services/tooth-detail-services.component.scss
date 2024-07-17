@@ -1,0 +1,65 @@
+.container-main {
+  margin: 0 auto 0 auto;
+}
+
+.nav-tabs .nav-link.active {
+  border-bottom: 2px solid #4b67b0;
+  border-top: 0 !important;
+  border-right: 0 !important;
+  border-left: 0 !important;
+  color: #4b67b0;
+}
+
+.nav-tabs {
+  border: 0 !important;
+  font-weight: 600;
+}
+
+.nav-btn{
+  color: black;
+}
+
+.btn-cancel , .btn-save{
+  border: 2px solid #e5e8eb;
+  border-radius: 10px;
+  width: 50px;
+  font-weight: 600;
+  color: #686D76;
+  margin-left: 10px;
+}
+
+.labels-input{
+  margin-left: 10px;
+  font-weight: 600;
+  margin-top: 24px;
+  text-align: center;
+  width: 120px;
+}
+
+.inputs{
+  margin: 15px auto 0 auto;
+  &:focus{
+    outline: none;
+    box-shadow: none;
+    border: 1px solid #8caaf3;
+  }
+}
+
+.selects{
+  margin: 14px auto 0 auto;
+  height: 40px;
+  &:focus{
+    outline: none;
+    box-shadow: none;
+    border: 1px solid #8caaf3;
+  }
+}
+
+.label-check-box{
+  font-weight: 600;
+  margin: 5px 10px 0 0;
+}
+
+.form-check-input{
+  margin-top: 8px;
+}
