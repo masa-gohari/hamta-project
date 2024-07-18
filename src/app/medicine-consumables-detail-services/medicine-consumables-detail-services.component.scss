@@ -19,7 +19,7 @@
   color: black;
 }
 
-.btn-add,
+
 .btn-cancel,
 .btn-save {
   border: 2px solid #e5e8eb;
@@ -28,6 +28,19 @@
   font-weight: 600;
   color: #686D76;
   margin-left: 10px;
+}
+
+.btn-plus {
+  border: 2px solid #e5e8eb;
+  border-radius: 10px;
+  width: 40px;
+  height: 40px;
+  font-weight: 600;
+  color: #686D76;
+}
+
+.bi-plus {
+  margin: -2px -7px 0 0;
 }
 
 .labels-input {

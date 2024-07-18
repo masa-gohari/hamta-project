@@ -33,7 +33,7 @@
                     </div>
                     <div>
                       <cdk-accordion class="example-accordion mt-2">
-                        <div *ngFor="let item of contents; let index = index">
+                        <div *ngFor="let item of toothServiceList; let index = index">
                           <cdk-accordion-item #accordionItem="cdkAccordionItem" class="example-accordion-item"
                             role="button" tabindex="0" [attr.id]="'accordion-header-' + index"
                             [attr.aria-expanded]="accordionItem.expanded"
@@ -44,7 +44,7 @@
                               </span>
                               {{ item.name }}
                             </div>
-                            <div *ngFor="let item of item.informationSchema" (click)="showDetail(index)"
+                            <div *ngFor="let item of item.informationSchema" (click)="showDetailTooth(index)"
                               class="example-accordion-item-body" role="region"
                               [style.display]="accordionItem.expanded ? '' : 'none'"
                               [attr.id]="'accordion-body-' + index"
@@ -69,7 +69,7 @@
                       </div>
                       <div class="col-5"></div>
                       <div class="col-1">
-                        <button class="btn mt-1 btn-plus">
+                        <button class="btn mt-1 btn-plus" (click)="addServiceTooth()">
                           <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
                             class="bi bi-plus" viewBox="0 0 16 16">
                             <path
@@ -80,7 +80,7 @@
                     </div>
                   </div>
                   <div class="card-body">
-                    <div class="table-responsive"  style="overflow-y: scroll;height: 500px;">
+                    <div class="table-responsive" style="overflow-y: scroll;height: 500px;">
                       <table class="table table-striped table-hover">
                         <thead class="thead-table">
                           <tr>
@@ -95,7 +95,7 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr class="text-center tr-table" *ngFor="let data of dataList">
+                          <tr class="text-center tr-table" *ngFor="let data of dataListToothService">
                             <td>{{data.nationalCode}}</td>
                             <td>{{data.serviceName}}</td>
                             <td>
@@ -106,7 +106,7 @@
                             <td>{{data.totalPrice}}</td>
                             <td>{{data.privateTriff}}</td>
                             <td>
-                              <button class="btn">
+                              <button class="btn" (click)="editBtnTooth()">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                   class="bi bi-pencil" viewBox="0 0 16 16">
                                   <path
@@ -140,17 +140,106 @@
             </svg>
           </button>
           <ng-template ngbNavContent>
-            <p>
-              Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko
-              farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean
-              shorts
-              ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit.
-              Keytar
-              helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes
-              anderson
-              8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester
-              stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.
-            </p>
+            <div class="row">
+              <div class="col-3">
+                <div class="card" style="margin-right: 20px;">
+                  <div class="card-body card-body-search">
+                    <div>
+                      <input type="text" class="form-control" placeholder="جستجو">
+                    </div>
+                    <div>
+                      <cdk-accordion class="example-accordion mt-2">
+                        <div *ngFor="let item of medicineServiceList; let index = index">
+                          <cdk-accordion-item #accordionItem="cdkAccordionItem" class="example-accordion-item"
+                            role="button" tabindex="0" [attr.id]="'accordion-header-' + index"
+                            [attr.aria-expanded]="accordionItem.expanded"
+                            [attr.aria-controls]="'accordion-body-' + index">
+                            <div class="example-accordion-item-header" (click)="accordionItem.toggle()">
+                              <span class="example-accordion-item-description">
+                                {{ accordionItem.expanded ? '&#11206;' : '&#11207;' }}
+                              </span>
+                              {{ item.name }}
+                            </div>
+                            <div *ngFor="let item of item.informationSchema" (click)="showDetailMedicine(index)"
+                              class="example-accordion-item-body" role="region"
+                              [style.display]="accordionItem.expanded ? '' : 'none'"
+                              [attr.id]="'accordion-body-' + index"
+                              [attr.aria-labelledby]="'accordion-header-' + index">
+                              {{item.name}}
+                            </div>
+                          </cdk-accordion-item>
+                        </div>
+                      </cdk-accordion>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-9">
+                <div class="card">
+                  <div class="card-header">
+                    <div class="row">
+                      <div class="col-6">
+                        <p class="title-name mt-3">
+                          دارو و لوازم مصرفی
+                        </p>
+                      </div>
+                      <div class="col-5"></div>
+                      <div class="col-1">
+                        <button class="btn mt-1 btn-plus" (click)="addServiceMedicine()">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
+                            class="bi bi-plus" viewBox="0 0 16 16">
+                            <path
+                              d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-body">
+                    <div class="table-responsive" style="overflow-y: scroll;height: 500px;">
+                      <table class="table table-striped table-hover">
+                        <thead class="thead-table">
+                          <tr>
+                            <th class="th-table" scope="col"> نام دارو یا لوازم مصرفی</th>
+                            <th class="th-table" scope="col">نام انگلیسی</th>
+                            <th class="th-table" scope="col">نام برند</th>
+                            <th class="th-table" scope="col"> قیمت</th>
+                            <th class="th-table" scope="col"> کد ژنریک </th>
+                            <th class="th-table" scope="col"> کد IRC</th>
+                            <th class="th-table" scope="col"> کد ERX</th>
+                            <th class="th-table" scope="col"> مبلغ مورد قبول بیمه </th>
+                            <th class="th-table" scope="col"> تاریخ ایجاد </th>
+                            <th class="th-table" scope="col">عملیات </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr class="text-center tr-table" *ngFor="let data of medicineAndconsumablesListService">
+                            <td>{{data.name}}</td>
+                            <td>{{data.englishName}}</td>
+                            <td>{{data.brandName}}</td>
+                            <td>{{data.price}}</td>
+                            <td>{{data.genericCode}}</td>
+                            <td>{{data.ircCode}}</td>
+                            <td>{{data.erxCode}}</td>
+                            <td>{{data.acceptedInsurance}}</td>
+                            <td>{{data.createDateShamsi}}</td>
+                            <td>
+                              <button class="btn" (click)="editBtnMedicine()">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                  class="bi bi-pencil" viewBox="0 0 16 16">
+                                  <path
+                                    d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325" />
+                                </svg>
+                              </button>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </ng-template>
         </ng-container>
       </div>

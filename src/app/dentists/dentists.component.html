@@ -1,0 +1,233 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-3 mt-5">
+      <div class="card" style="margin:2px 20px 0 0">
+        <div class="card-body card-body-search">
+          <div>
+            <input type="text" class="form-control" placeholder="جستجو">
+          </div>
+          <div>
+            <cdk-accordion class="example-accordion mt-2">
+              <div *ngFor="let item of doctorsServiceList ; let index = index">
+                <cdk-accordion-item #accordionItem="cdkAccordionItem" class="example-accordion-item" role="button"
+                  tabindex="0" [attr.id]="'accordion-header-' + index" [attr.aria-expanded]="accordionItem.expanded"
+                  [attr.aria-controls]="'accordion-body-' + index">
+                  <div class="example-accordion-item-header" (click)="accordionItem.toggle()">
+                    <span class="example-accordion-item-description">
+                      {{ accordionItem.expanded ? '&#11206;' : '&#11207;' }}
+                    </span>
+                    {{ item.name }}
+                  </div>
+                  <div *ngFor="let item of item.informationSchema" (click)="showDetailDr(index)"
+                    class="example-accordion-item-body" role="region"
+                    [style.display]="accordionItem.expanded ? '' : 'none'" [attr.id]="'accordion-body-' + index"
+                    [attr.aria-labelledby]="'accordion-header-' + index">
+                    {{item.name}}
+                  </div>
+                </cdk-accordion-item>
+              </div>
+            </cdk-accordion>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-9">
+      <div class="row">
+        <div class="col-9 col-person">
+        </div>
+        <div class="col-3 d-flex justify-content-end">
+          <button class="btn btn-clock" (click)="open(content)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-clock"
+              viewBox="0 0 16 16">
+              <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z" />
+              <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0" />
+            </svg>
+          </button>
+          <button class="btn btn-save">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-floppy"
+              viewBox="0 0 16 16">
+              <path d="M11 2H9v3h2z" />
+              <path
+                d="M1.5 0h11.586a1.5 1.5 0 0 1 1.06.44l1.415 1.414A1.5 1.5 0 0 1 16 2.914V14.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13A1.5 1.5 0 0 1 1.5 0M1 1.5v13a.5.5 0 0 0 .5.5H2v-4.5A1.5 1.5 0 0 1 3.5 9h9a1.5 1.5 0 0 1 1.5 1.5V15h.5a.5.5 0 0 0 .5-.5V2.914a.5.5 0 0 0-.146-.353l-1.415-1.415A.5.5 0 0 0 13.086 1H13v4.5A1.5 1.5 0 0 1 11.5 7h-7A1.5 1.5 0 0 1 3 5.5V1H1.5a.5.5 0 0 0-.5.5m3 4a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5V1H4zM3 15h10v-4.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5z" />
+            </svg>
+          </button>
+          <button class="btn btn-add">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-plus-lg"
+              viewBox="0 0 16 16">
+              <path fill-rule="evenodd"
+                d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2" />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <p class="title-name mt-2">اطلاعات پایه</p>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-12 d-flex">
+              <input class="form-check-input" type="checkbox" value="" id="active">
+              <label class="form-check-label label-check-box" for="active">
+                فعال
+              </label>
+            </div>
+            <div class="col-4 d-flex mt-2">
+              <label class="labels-input">نام </label>
+              <input type="text" class="form-control mt-3 w-75 inputs">
+            </div>
+            <div class="col-4 d-flex mt-2">
+              <label class="labels-input">نام خانوادگی </label>
+              <input type="text" class="form-control mt-3 w-75 inputs">
+            </div>
+            <div class="col-4 d-flex mt-2">
+              <label class="labels-input"> کد نظام پزشکی </label>
+              <input type="text" class="form-control mt-3 w-75 inputs">
+            </div>
+            <div class="col-4 d-flex mt-2">
+              <label class="labels-input"> وضعیت تخصص</label>
+              <select class="form-select selects w-75" aria-label="Default select example">
+                <option selected>Open this select menu</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
+            </div>
+            <div class="col-4 d-flex mt-2">
+              <label class="labels-input"> نوع تخصص</label>
+              <select class="form-select selects w-75" aria-label="Default select example">
+                <option selected>Open this select menu</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
+            </div>
+            <div class="col-4 d-flex mt-2">
+              <label class="labels-input"> درجه </label>
+              <select class="form-select selects w-75" aria-label="Default select example">
+                <option selected>Open this select menu</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
+            </div>
+            <div class="col-4 d-flex mt-2">
+              <label class="labels-input"> کد ملی </label>
+              <input type="text" class="form-control mt-3 w-75 inputs">
+            </div>
+            <div class="col-4 d-flex mt-2">
+              <label class="labels-input"> تاریخ تولد</label>
+              <input type="text" class="form-control mt-3 w-75 inputs">
+            </div>
+            <div class="col-4 d-flex mt-2">
+              <label class="labels-input"> شماره همراه</label>
+              <input type="text" class="form-control mt-3 w-75 inputs">
+            </div>
+            <div class="col-4 d-flex mt-2">
+              <label class="labels-input"> ایمیل</label>
+              <input type="text" class="form-control mt-3 w-75 inputs">
+            </div>
+            <div class="col-4 d-flex justify-content-center mt-2">
+              <div class="btn-gender">
+                <input class="form-check-input" type="radio" name="radio-btn" id="men">
+                <label class="form-check-label" for="men">
+                  مرد
+                </label>
+              </div>
+              <div class="btn-gender">
+                <input class="form-check-input" type="radio" name="radio-btn" id="women">
+                <label class="form-check-label" for="women">
+                  زن
+                </label>
+              </div>
+            </div>
+            <div class="col-4 d-flex mt-2">
+            </div>
+            <div class="col-4 d-flex mt-2">
+              <label class="labels-input"> استان </label>
+              <select class="form-select selects w-75" aria-label="Default select example">
+                <option selected>Open this select menu</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
+            </div>
+            <div class="col-4 d-flex mt-2">
+              <label class="labels-input"> شهر </label>
+              <select class="form-select selects w-75" aria-label="Default select example">
+                <option selected>Open this select menu</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
+            </div>
+            <div class="col-12 d-flex mt-2 mb-2">
+              <label class="labels-input"> آدرس </label>
+              <input type="text" class="form-control mt-3 inputs">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card mt-3 mb-5">
+        <div class="card-header">
+          <p class="title-name mt-2">اطلاعات پزشک</p>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-4 d-flex mt-2">
+              <label class="labels-input">تصویر پزشک </label>
+              <input class="form-control mt-3 w-75 inputs" type="file" accept="image/*">
+            </div>
+            <div class="col-8"></div>
+            <div class="col-4 d-flex mt-2">
+              <label class="labels-input"> نوع قرارداد</label>
+              <select class="form-select selects w-75" aria-label="Default select example">
+                <option selected>Open this select menu</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
+            </div>
+            <div class="col-4 d-flex mt-2">
+              <label class="labels-input">تاریخ شروع </label>
+              <input type="text" class="form-control mt-3 w-75 inputs">
+            </div>
+            <div class="col-4 d-flex mt-2">
+              <label class="labels-input"> تاریخ پایان </label>
+              <input type="text" class="form-control mt-3 w-75 inputs">
+            </div>
+            <div class="col-4 d-flex mt-2">
+              <label class="labels-input"> بانک</label>
+              <select class="form-select selects w-75" aria-label="Default select example">
+                <option selected>Open this select menu</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
+            </div>
+            <div class="col-4 d-flex mt-2">
+              <label class="labels-input">شماره حساب </label>
+              <input type="text" class="form-control mt-3 w-75 inputs">
+            </div>
+            <div class="col-4"></div>
+            <div class="col-12 d-flex mt-2 mb-2">
+              <label class="labels-input"> درباره پزشک </label>
+              <textarea class="form-control inputs mt-3" rows="4"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #content let-offcanvas>
+    <div class="offcanvas-body">
+      <form>
+        <div class="card">
+          <div class="card-body">
+            <p class="title-name"> حضور پزشک</p>
+          </div>
+        </div>
+      </form>
+    </div>
+  </ng-template>
+</div>

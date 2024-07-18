@@ -18,6 +18,7 @@ import { SettingsComponent } from './settings/settings.component';
 import { HttpClientModule } from '@angular/common/http';
 import {CdkAccordionModule} from '@angular/cdk/accordion';
 import { ToothDetailServicesComponent } from './tooth-detail-services/tooth-detail-services.component';
+import { MedicineConsumablesDetailServicesComponent } from './medicine-consumables-detail-services/medicine-consumables-detail-services.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { ToothDetailServicesComponent } from './tooth-detail-services/tooth-deta
     StockComponent,
     SettingsComponent,
     ToothDetailServicesComponent,
+    MedicineConsumablesDetailServicesComponent,
   ],
   imports: [
     BrowserModule,

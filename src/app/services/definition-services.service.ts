@@ -11,6 +11,7 @@ export class definitionServicesApi {
 
   private _getInformationMasterService = this._baseUrl + 'api/MasterService/GetInformationMasterService';
   private _geMasterServiceList = this._baseUrl + 'api/MasterService/GeMasterServiceList';
+  private _getInformationSalable = this._baseUrl + 'api/Salable/GetInformationSalable';
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -23,8 +24,12 @@ export class definitionServicesApi {
   public GetToothInfo(): Observable<any> {
     return this._http.get<any>(this._getInformationMasterService)
   }
-  
+
   public GetMasterServiceList(): Observable<any> {
     return this._http.get<any>(this._geMasterServiceList)
+  }
+
+  public GetMedicineInfo(): Observable<any> {
+    return this._http.get<any>(this._getInformationSalable)
   }
 }

@@ -1,0 +1,60 @@
+.labels-input {
+  margin-left: 10px;
+  font-weight: 600;
+  margin-top: 24px;
+  text-align: center;
+  width: 120px;
+}
+
+.inputs {
+  margin: 15px auto 0 auto;
+
+  &:focus {
+    outline: none;
+    box-shadow: none;
+    border: 1px solid #8caaf3;
+  }
+}
+
+.selects {
+  margin: 14px auto 0 auto;
+  height: 40px;
+
+  &:focus {
+    outline: none;
+    box-shadow: none;
+    border: 1px solid #8caaf3;
+  }
+}
+
+.label-check-box {
+  font-weight: 600;
+  margin: 5px 10px 0 0;
+  font-size: 14px !important;
+}
+
+.form-check-input {
+  margin-top: 8px;
+}
+
+.btn-gender {
+  margin: 20px 30px 0 0;
+}
+
+.form-check-label{
+  font-weight: 600;
+  font-size: 16px;
+  margin: 2px 15px 0 0;
+}
+
+.btn-add,
+.btn-clock,
+.btn-save {
+  border: 2px solid #e5e8eb;
+  border-radius: 10px;
+  width: 50px;
+  font-weight: 600;
+  color: #686D76;
+  margin: 5px 0 5px 10px ;
+  background-color: white;
+}
