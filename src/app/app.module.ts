@@ -11,7 +11,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PatientsListComponent } from './patients-list/patients-list.component';
 import { DefinitionServicesComponent } from './definition-services/definition-services.component';
 import { DentistsComponent } from './dentists/dentists.component';
-import { StockComponent } from './stock/stock.component';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { NgbAccordionModule, NgbModule, NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 import { SettingsComponent } from './settings/settings.component';
@@ -19,6 +18,10 @@ import { HttpClientModule } from '@angular/common/http';
 import {CdkAccordionModule} from '@angular/cdk/accordion';
 import { ToothDetailServicesComponent } from './tooth-detail-services/tooth-detail-services.component';
 import { MedicineConsumablesDetailServicesComponent } from './medicine-consumables-detail-services/medicine-consumables-detail-services.component';
+import { WarehouseComponent } from './warehouse/warehouse.component';
+import { WarehouseDocumentsDetailComponent } from './warehouse-documents-detail/warehouse-documents-detail.component';
+import { CardexWarehouseDetailComponent } from './cardex-warehouse-detail/cardex-warehouse-detail.component';
+import { PermisionsComponent } from './permisions/permisions.component';
 
 @NgModule({
   declarations: [
@@ -29,10 +32,13 @@ import { MedicineConsumablesDetailServicesComponent } from './medicine-consumabl
     PatientsListComponent,
     DefinitionServicesComponent,
     DentistsComponent,
-    StockComponent,
     SettingsComponent,
     ToothDetailServicesComponent,
     MedicineConsumablesDetailServicesComponent,
+    WarehouseComponent,
+    WarehouseDocumentsDetailComponent,
+    CardexWarehouseDetailComponent,
+    PermisionsComponent,
   ],
   imports: [
     BrowserModule,

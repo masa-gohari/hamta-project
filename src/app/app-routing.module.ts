@@ -6,8 +6,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { PatientsListComponent } from './patients-list/patients-list.component';
 import { DefinitionServicesComponent } from './definition-services/definition-services.component';
 import { DentistsComponent } from './dentists/dentists.component';
-import { StockComponent } from './stock/stock.component';
-import { SettingsComponent } from './settings/settings.component';
+import { WarehouseComponent } from './warehouse/warehouse.component';
+import { PermisionsComponent } from './permisions/permisions.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -18,8 +18,8 @@ const routes: Routes = [
       {path: 'patientsList', component: PatientsListComponent},
       {path: 'definitionServices', component: DefinitionServicesComponent},
       {path: 'dentists', component: DentistsComponent},
-      {path: 'stock', component: StockComponent},
-      {path: 'settings', component: SettingsComponent},
+      {path: 'Warehouse', component: WarehouseComponent},
+      {path: 'permissions', component: PermisionsComponent},
     ]
   },
   { path: '', redirectTo: 'login', pathMatch: 'full' },

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SettingsComponent } from '../settings/settings.component';
+import { sharedApi } from '../services/shared.service';
+import { PermisionsComponent } from '../permisions/permisions.component';
 
 @Component({
   selector: 'app-navbar',
@@ -14,13 +16,22 @@ export class NavbarComponent implements OnInit {
   isActiveDefinitionServices: boolean;
   isActiveDentists: boolean;
   isActiveStock: boolean;
-  modalInstance:any;
+  isActivePermission: boolean;
+  modalInstance: any;
+  todayDate: string;
 
-  constructor(private router: Router, private modalService: NgbModal) { }
+  constructor(private router: Router, private modalService: NgbModal, private sharedApi: sharedApi) { }
 
   ngOnInit(): void {
     this.isActiveDashboard = true;
     this.router.navigate(['/navbar/dashboard']);
+    this.getTodayDate()
+  }
+
+  getTodayDate() {
+    this.sharedApi.todayDate().subscribe((q: any) => {
+      this.todayDate = q.content.fDateNameJalali4;
+    })
   }
 
   activeDashboard() {
@@ -29,6 +40,7 @@ export class NavbarComponent implements OnInit {
     this.isActiveDefinitionServices = false;
     this.isActiveDentists = false;
     this.isActiveStock = false;
+    this.isActivePermission = false;
   }
 
   activePatientsList() {
@@ -37,6 +49,7 @@ export class NavbarComponent implements OnInit {
     this.isActiveDefinitionServices = false;
     this.isActiveDentists = false;
     this.isActiveStock = false;
+    this.isActivePermission = false;
   }
 
   activeDefinitionServices() {
@@ -45,6 +58,7 @@ export class NavbarComponent implements OnInit {
     this.isActiveDefinitionServices = true;
     this.isActiveDentists = false;
     this.isActiveStock = false;
+    this.isActivePermission = false;
   }
 
   activeDentists() {
@@ -53,6 +67,7 @@ export class NavbarComponent implements OnInit {
     this.isActiveDefinitionServices = false;
     this.isActiveDentists = true;
     this.isActiveStock = false;
+    this.isActivePermission = false;
   }
 
   activeStock() {
@@ -60,11 +75,19 @@ export class NavbarComponent implements OnInit {
     this.isActivePatientsList = false;
     this.isActiveDefinitionServices = false;
     this.isActiveDentists = false;
+    this.isActivePermission = false;
     this.isActiveStock = true;
+  }
+  activePermission() {
+    this.isActiveDashboard = false;
+    this.isActivePatientsList = false;
+    this.isActiveDefinitionServices = false;
+    this.isActiveDentists = false;
+    this.isActiveStock = false;
+    this.isActivePermission = true;
   }
 
   openSetting() {
     this.modalInstance = this.modalService.open(SettingsComponent, { size: 'xl' });
   }
-
 }

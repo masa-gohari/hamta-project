@@ -1,13 +1,12 @@
 .btn-add-patient {
-  background-color: #4535C1;
-  color: white;
-  font-weight: bold;
-
-  &:hover {
-    background-color: #96C9F4;
-    color: black;
-  }
+  font-weight: 600;
+  width: fit-content;
+  border-radius: 10px;
+  margin-left: 10px;
+  border: 2px solid #4b67b0;
+  background-color: white;
 }
+
 
 .label-national-code {
   font-size: 16px;

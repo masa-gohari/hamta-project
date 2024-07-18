@@ -1,0 +1,180 @@
+<div class="container-fluid mt-4">
+  <div class="row">
+    <div class="col-3">
+      <div class="card">
+        <div class="card-body">
+          <div>
+            <button class="btn btn-name-stock">
+              انبار داروخانه 1
+            </button>
+          </div>
+          <div>
+            <button class="btn btn-name-stock">
+              انبار داروخانه 2
+            </button>
+          </div>
+          <div>
+            <button class="btn btn-name-stock">
+              انبار لوازم مصرفی
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-9">
+      <div class="card">
+        <div class="card-header">
+          <p class="title-name mt-1">داروخانه 1</p>
+        </div>
+        <div class="card-body">
+          <div class="col-11 container-main">
+            <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+              <li [ngbNavItem]="1">
+                <button class="nav-btn" ngbNavLink>کاردکس انبار </button>
+                <ng-template ngbNavContent>
+                  <div class="card mt-3 mb-5">
+                    <div class="card-body">
+                      <div class="table-responsive">
+                        <table class="table table-striped table-hover">
+                          <thead class="thead-table">
+                            <tr>
+                              <th class="th-table" scope="col">نام قلم</th>
+                              <th class="th-table" scope="col">تعداد</th>
+                              <th class="th-table" scope="col"> تعداد ورودی</th>
+                              <th class="th-table" scope="col">تعداد خروجی</th>
+                              <th class="th-table" scope="col"> تاریخ</th>
+                              <th class="th-table" scope="col">عملیات </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr class="text-center tr-table">
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td>
+                                <button class="btn" (click)="detailCardexDoc()">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                                    <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325"/>
+                                  </svg>
+                                </button>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </ng-template>
+              </li>
+              <li [ngbNavItem]="2">
+                <button class="nav-btn" ngbNavLink>سند ورودی</button>
+                <ng-template ngbNavContent>
+                  <div class="card mt-3 mb-5">
+                    <div class="row">
+                      <div class="col-10"></div>
+                      <div class="col-2 d-flex justify-content-end">
+                        <button class="btn btn-add mt-3" (click)="showDetailEntryDocument()">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                            class="bi bi-plus-lg" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                              d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2" />
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="card-body">
+                      <div class="table-responsive">
+                        <table class="table table-striped table-hover">
+                          <thead class="thead-table">
+                            <tr>
+                              <th class="th-table" scope="col">شماره سند </th>
+                              <th class="th-table" scope="col">فروشگاه </th>
+                              <th class="th-table" scope="col">امضا شده </th>
+                              <th class="th-table" scope="col">تاریخ سند</th>
+                              <th class="th-table" scope="col">شماره فاکتور</th>
+                              <th class="th-table" scope="col"> تاریخ فاکتور</th>
+                              <th class="th-table" scope="col"> شرکت</th>
+                              <th class="th-table" scope="col"> تخفیف</th>
+                              <th class="th-table" scope="col">درصد تخفیف</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr class="text-center tr-table">
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </ng-template>
+              </li>
+              <li [ngbNavItem]="3">
+                <button class="nav-btn" ngbNavLink>سند خروجی</button>
+                <ng-template ngbNavContent>
+                  <div class="card mt-3 mb-5">
+                    <div class="row">
+                      <div class="col-10"></div>
+                      <div class="col-2 d-flex justify-content-end">
+                        <button class="btn btn-add mt-3" (click)="showDetailOutputDocument()">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                            class="bi bi-plus-lg" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                              d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2" />
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="card-body">
+                      <div class="table-responsive">
+                        <table class="table table-striped table-hover">
+                          <thead class="thead-table">
+                            <tr>
+                              <th class="th-table" scope="col">شماره سند </th>
+                              <th class="th-table" scope="col">فروشگاه </th>
+                              <th class="th-table" scope="col">امضا شده </th>
+                              <th class="th-table" scope="col">تاریخ سند</th>
+                              <th class="th-table" scope="col">شماره فاکتور</th>
+                              <th class="th-table" scope="col"> تاریخ فاکتور</th>
+                              <th class="th-table" scope="col"> شرکت</th>
+                              <th class="th-table" scope="col"> تخفیف</th>
+                              <th class="th-table" scope="col">درصد تخفیف</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr class="text-center tr-table">
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </ng-template>
+              </li>
+            </ul>
+            <div [ngbNavOutlet]="nav" class="mt-2"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
