@@ -1,3 +1,7 @@
+@import 'src/app/keyboard-style.scss';
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';
+
 * {
   font-family: 'BYekan' !important;
 }
@@ -7,7 +11,7 @@ body {
   background-color: #F6F5F2 !important;
 }
 
-.card-header{
+.card-header {
   background-color: white !important;
 }
 
@@ -56,7 +60,7 @@ body {
   font-weight: 600;
 }
 
-.example-accordion-item + .example-accordion-item {
+.example-accordion-item+.example-accordion-item {
   border-top: none;
 }
 
@@ -91,5 +95,12 @@ body {
   border-bottom-right-radius: 4px;
 }
 
-/* Importing Bootstrap SCSS file. */
-@import 'bootstrap/scss/bootstrap';
+.toast-message {
+  direction: ltr
+}
+
+.disabledOption{
+  display: none;
+}
+
+

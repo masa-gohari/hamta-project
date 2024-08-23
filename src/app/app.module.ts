@@ -22,6 +22,12 @@ import { WarehouseComponent } from './warehouse/warehouse.component';
 import { WarehouseDocumentsDetailComponent } from './warehouse-documents-detail/warehouse-documents-detail.component';
 import { CardexWarehouseDetailComponent } from './cardex-warehouse-detail/cardex-warehouse-detail.component';
 import { PermisionsComponent } from './permisions/permisions.component';
+import { ApiService } from './services/api-services.service';
+import { IdentityService } from './services/identity.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
+import { NgPersianDatepickerModule } from 'ng-persian-datepicker';
+
 
 @NgModule({
   declarations: [
@@ -41,6 +47,8 @@ import { PermisionsComponent } from './permisions/permisions.component';
     PermisionsComponent,
   ],
   imports: [
+    FormsModule,
+    ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -51,12 +59,13 @@ import { PermisionsComponent } from './permisions/permisions.component';
     HttpClientModule,
     NgbAccordionModule,
     CdkAccordionModule,
+    NgPersianDatepickerModule,
+    ToastrModule.forRoot({ positionClass: 'toast-bottom-left' }),
     NgxEchartsModule.forRoot({
       echarts: () => import('echarts'),
     }),
-
   ],
-  providers: [],
+  providers: [ApiService,IdentityService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

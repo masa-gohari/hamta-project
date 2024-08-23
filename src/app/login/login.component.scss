@@ -85,3 +85,42 @@
   max-width: 800px;
   height: auto;
 }
+
+.eye-svg{
+  color: #8cb9e3;
+}
+
+.btn-svg-eye {
+  border: 2px solid #8cb9e3;
+  border-radius: 10px;
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+
+.keyboard-svg {
+  border-top: 2px solid #8cb9e3;
+  border-radius: 0px;
+  border-bottom: 2px solid #8cb9e3;
+  border-right: 2px solid #8cb9e3;
+  border-right: 0 !important;
+}
+
+ul {
+  text-align: center;
+}
+
+.simple-keyboard {
+  max-width: 349px;
+  direction: ltr;
+  position: absolute;
+  top: 53%;
+  right: 13%;
+  display: none;
+}
+
+.block{
+  display: block;
+}
+.none{
+  display: none;
+}

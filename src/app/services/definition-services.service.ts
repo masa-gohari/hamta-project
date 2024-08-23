@@ -9,9 +9,9 @@ import { Observable } from "rxjs";
 export class definitionServicesApi {
   public _baseUrl = AppSetting.baseUrl;
 
-  private _getInformationMasterService = this._baseUrl + 'api/MasterService/GetInformationMasterService';
-  private _geMasterServiceList = this._baseUrl + 'api/MasterService/GeMasterServiceList';
-  private _getInformationSalable = this._baseUrl + 'api/Salable/GetInformationSalable';
+  private _getInformationMasterService = this._baseUrl + 'MasterService/GetInformationMasterService';
+  private _geMasterServiceList = this._baseUrl + 'MasterService/GeMasterServiceList';
+  private _getInformationSalable = this._baseUrl + 'Salable/GetInformationSalable';
 
   httpOptions = {
     headers: new HttpHeaders({

@@ -9,7 +9,7 @@ import { Observable } from "rxjs";
 export class permissionApi {
   public _baseUrl = AppSetting.baseUrl;
 
-  private _getGroupPermisionList = this._baseUrl + 'api/UserPermision/GetGroupPermisionList';
+  private _getGroupPermisionList = this._baseUrl + 'UserPermision/GetGroupPermisionList';
 
   httpOptions = {
     headers: new HttpHeaders({

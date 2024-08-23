@@ -9,7 +9,7 @@ import { Observable } from "rxjs";
 export class dentistsServicesApi {
   public _baseUrl = AppSetting.baseUrl;
 
-  private _getInformationPractitioner = this._baseUrl + 'api/Practitioner/GetInformationPractitioner';
+  private _getInformationPractitioner = this._baseUrl + 'Practitioner/GetInformationPractitioner';
 
   httpOptions = {
     headers: new HttpHeaders({

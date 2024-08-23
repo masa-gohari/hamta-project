@@ -22,8 +22,45 @@
     box-shadow: none;
   }
 }
-.btn-bottom-modal{
+
+.btn-bottom-modal {
   width: 150px;
   font-size: 16px;
   font-weight: bold;
+}
+
+.labels-input {
+  margin-left: 10px;
+  font-weight: 600;
+  margin-top: 24px;
+  text-align: center;
+  width: 120px;
+}
+
+.inputs {
+  margin: 15px auto 0 auto;
+
+  &:focus {
+    outline: none;
+    box-shadow: none;
+    border: 1px solid #8caaf3;
+  }
+}
+
+::ng-deep ng-persian-datepicker .datepicker-outer-container {
+  position: absolute;
+  width: 235px;
+  z-index: 1000;
+}
+
+.selects {
+  margin: 14px auto 0 auto;
+  height: 40px;
+  font-weight: bold;
+
+  &:focus {
+    outline: none;
+    box-shadow: none;
+    border: 1px solid #8caaf3;
+  }
 }

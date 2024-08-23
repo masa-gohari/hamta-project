@@ -23,9 +23,13 @@
     "@ng-bootstrap/ng-bootstrap": "^14.2.0",
     "@popperjs/core": "^2.11.6",
     "bootstrap": "^5.3.3",
+    "jalali-ts": "^2.0.5",
     "jquery": "^3.7.1",
+    "ng-persian-datepicker": "^6.1.0",
     "ngx-echarts": "^14.0.0",
+    "ngx-toastr": "^15.2.2",
     "rxjs": "~7.8.0",
+    "simple-keyboard": "^3.7.104",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"
   },

@@ -1,3 +1,3 @@
 export class AppSetting {
-  public static baseUrl ="https://hamtano.com/dentalhamta/"
+  public static baseUrl ="https://hamtano.com/apiIIs/api/"
 }

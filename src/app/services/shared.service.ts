@@ -9,7 +9,7 @@ import { Observable } from "rxjs";
 export class sharedApi {
   public _baseUrl = AppSetting.baseUrl;
 
-  private _getToday = this._baseUrl + 'api/BaseData/1/GetToday';
+  private _getToday = this._baseUrl + 'BaseData/1/GetToday';
 
   httpOptions = {
     headers: new HttpHeaders({

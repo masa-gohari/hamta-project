@@ -9,7 +9,7 @@ import { Observable } from "rxjs";
 export class patientsApi {
   public _baseUrl = AppSetting.baseUrl;
 
-  private _getPatients = this._baseUrl + 'api/Patient/GetPatients';
+  private _getPatients = this._baseUrl + 'Patient/GetPatients';
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -24,11 +24,8 @@ export class patientsApi {
     return this._http.get<any>(this._getPatients)
   }
 
-  // public SortDocs(model: DocSortModel): Observable<any> {
-  //   return this._http.post<any>(this._sortDocs, model, this.httpOptions);
-  // }
-  // public GetInvoiceExeclModian(fromDate:string,toDate:string): Observable<any> {
-  //   return this._http.get<any>(this._invoiceExcelModian+"?fromDate=" + fromDate +"&toDate=" + toDate );
-  // }
+  public GetPatientByNationalCode(nationalCode :string):Observable<any>{
+    return this._http.get(this._baseUrl + `Patient/${nationalCode}/GetPatientByNationalCode`)
+  }
 
 }
