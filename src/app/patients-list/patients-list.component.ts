@@ -1,9 +1,10 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { patientsApi } from '../services/patient.service';
-import { FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ApiService } from '../services/api-services.service';
 import { EstelamModel } from '../models/login.model';
+import { InsertPatientModel } from '../models/patient.model';
 
 @Component({
   selector: 'app-patients-list',
@@ -13,27 +14,41 @@ import { EstelamModel } from '../models/login.model';
 
 export class PatientsListComponent implements OnInit {
   @ViewChild('patient') patient: TemplateRef<any>;
+  @ViewChild('estelamModal') estelamModal: TemplateRef<any>;
+  form: FormGroup;
   patientList: Array<any>;
   patientWithNationalCode: Array<any>;
   nationalCode: string;
   nationalCodeForEstelam: string;
-  dateValueBirth = new FormControl();
-  dateValueBirthDay = new FormControl();
-  birthDate: string;
+  dateValueBirthDate = new FormControl();
   valueBirthDate: string;
+  selectedBirthDate: string;
+  selectedCreateDate: string;
   genderIdSelected: number;
-  birthDateShamsi:string;
-  createDateShamsi:string;
+  provinceCodeSelected: number;
+  countyCodeSelected: number;
   genderList: Array<any> = [
-    { id: 1, name: 'مرد' },
-    { id: 2, name: 'زن' }
+    { id: 0, name: 'مرد' },
+    { id: 1, name: 'زن' }
   ];
-  constructor(private modalService: NgbModal, private patientsService: patientsApi,
-    private apiService: ApiService
-  ) { }
+  provinceList: Array<any>;
+  countyList: Array<any>;
+
+  constructor(
+    private modalService: NgbModal,
+    private patientsService: patientsApi,
+    private apiService: ApiService,
+    config: NgbModalConfig,
+    private fb: FormBuilder,
+  ) {
+    config.backdrop = 'static';
+    config.keyboard = false;
+    this.buildForm()
+  }
 
   ngOnInit(): void {
-    this.getListPatient()
+    this.getListPatient();
+    this.getListProvince();
   }
 
   openModal(content: any) {
@@ -46,6 +61,31 @@ export class PatientsListComponent implements OnInit {
     })
   }
 
+  onChangeProvince(event: any) {
+    this.provinceCodeSelected = event.target.value;
+    this.getListCounty()
+  }
+
+  onChangeCounty(event: any) {
+    this.countyCodeSelected = event.target.value;
+  }
+
+  onChangeGender(event: any) {
+    this.genderIdSelected = event.target.value;
+  }
+
+  getListProvince() {
+    this.apiService.GetProvince().subscribe((q: any) => {
+      this.provinceList = q.content;
+    })
+  }
+
+  getListCounty() {
+    this.apiService.GetCounty(0, this.provinceCodeSelected).subscribe((q: any) => {
+      this.countyList = q.content;
+    })
+  }
+
   openFormPatient(patient: any) {
     this.modalService.open(this.patient, { size: 'xl' });
   }
@@ -53,37 +93,99 @@ export class PatientsListComponent implements OnInit {
   getPatientWithNationalCode() {
     this.patientsService.GetPatientByNationalCode(this.nationalCode).subscribe((q: any) => {
       this.patientWithNationalCode = q.content;
-      console.log(q.content)
-      if(this.patientWithNationalCode.length != 0){
+      if (this.patientWithNationalCode != null) {
         this.openFormPatient(this.patient)
-        
+      } else {
+        this.openEstelam(this.estelamModal)
       }
     })
-    // if (patientByNAtionalCode.length == 0) {
-    //   this.openFormPatient(this.patient)
-    // }
-
   }
-  onSelectDateFrom(event: any) {
-    this.birthDate = this.dateValueBirth.value;
+
+  onSelectReceptionDate(event: any) {
+    this.selectedCreateDate = event.shamsi;
   }
-  onChangeEvent(event: any) { };
 
+  onSelectBirthDate(event: any) {
+    this.selectedBirthDate = event.shamsi;
+  }
 
-  openEstelam(birthDate: any) {
-    this.modalService.open(birthDate);
+  onSelectDateBirth(event: any) {
+    this.valueBirthDate = this.dateValueBirthDate.value;
+  }
+
+  openEstelam(estelam: any) {
+    this.modalService.open(this.estelamModal);
+  }
+
+  submitEstelam() {
     var estelamModel = new EstelamModel();
     estelamModel.nationalCode = this.nationalCode;
-    estelamModel.key='127'
+    estelamModel.key = '127'
     this.apiService.GetEstelam(estelamModel).subscribe((q: any) => {
-      console.log(q)
+      if (q.result == true) {
+        this.openFormPatient(this.patient)
+      }
     })
   }
 
-  onSelectDatefromBirth(event: any) {
-    this.valueBirthDate = this.dateValueBirthDay.value;
+  clearDate() {
+    this.dateValueBirthDate.reset()
   }
 
-  onChangeEventBirth(event: any) { };
+  buildForm() {
+    this.form = this.fb.group({
+      patientID: [],
+      id: [],
+      isActive: [],
+      firstName: [],
+      lastName: [],
+      fatherName: [],
+      nationalCode: [],
+      birthDate: [],
+      mobileNumber: [],
+      genderIx: [],
+      isSitizen: [],
+      provinceIx: [],
+      cityIx: [],
+      insuranceID: [],
+      email: [],
+      description: [],
+      createDate: [],
+      isRegistry: [],
+      address: [],
+    });
+  }
 
+  get f() { return this.form.controls; }
+
+  initial() {
+    this.buildForm();
+  }
+
+  createNewPatient() {
+    var insertPatient = new InsertPatientModel();
+    insertPatient.id = '';
+    insertPatient.patientID = 0;
+    insertPatient.firstName = this.form.value.firstName;
+    insertPatient.lastName = this.form.value.lastName;
+    insertPatient.fatherName = this.form.value.fatherName;
+    insertPatient.nationalCode = this.form.value.nationalCode;
+    insertPatient.birthDate = this.selectedBirthDate;
+    insertPatient.mobileNumber = this.form.value.mobileNumber;
+    insertPatient.genderIx = +this.genderIdSelected;
+    insertPatient.isSitizen = false;
+    insertPatient.isActive = false;
+    insertPatient.provinceIx = +this.provinceCodeSelected;
+    insertPatient.cityIx = +this.countyCodeSelected;
+    insertPatient.insuranceID = this.form.value.insuranceID;
+    insertPatient.description = this.form.value.description;
+    insertPatient.email = this.form.value.email;
+    insertPatient.createDate = this.selectedCreateDate;
+    insertPatient.isRegistry = false;
+    insertPatient.address = this.form.value.address;
+    this.patientsService.InsertNewPatient(insertPatient).subscribe((q: any) => {
+      console.log(q)
+    })
+
+  }
 }

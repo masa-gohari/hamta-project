@@ -31,4 +31,12 @@ export class ApiService {
     return this._http.post(this._estelam, estelamModel, this.httpOptions);
   }
 
+  public GetProvince(): Observable<any> {
+    return this._http.get(this._baseUrl + 'BaseData/GetCountryDivisions?ParentType=1&ParentCode=0');
+  }
+
+  public GetCounty(parentType: number, parentCode: number): Observable<any> {
+    return this._http.get(this._baseUrl + `BaseData/GetCountryDivisions?ParentType=${parentType}&ParentCode=${parentCode}`);
+  }
+
 }
