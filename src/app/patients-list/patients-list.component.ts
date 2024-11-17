@@ -1,10 +1,11 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { patientsApi } from '../services/patient.service';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from '../services/api-services.service';
 import { EstelamModel } from '../models/login.model';
-import { InsertPatientModel } from '../models/patient.model';
+import { InsertPatientModel, UpdatePatientModel } from '../models/patient.model';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-patients-list',
@@ -14,8 +15,11 @@ import { InsertPatientModel } from '../models/patient.model';
 
 export class PatientsListComponent implements OnInit {
   @ViewChild('patient') patient: TemplateRef<any>;
+  @ViewChild('editPatient') editPatient: TemplateRef<any>;
   @ViewChild('estelamModal') estelamModal: TemplateRef<any>;
+
   form: FormGroup;
+  formEdit: FormGroup;
   patientList: Array<any>;
   patientWithNationalCode: Array<any>;
   nationalCode: string;
@@ -27,9 +31,13 @@ export class PatientsListComponent implements OnInit {
   genderIdSelected: number;
   provinceCodeSelected: number;
   countyCodeSelected: number;
+  selectedRow: any;
+  isChangedGender: boolean = false;
+  isChangedProvince: boolean = false;
+  isChangedCounty: boolean = false;
   genderList: Array<any> = [
-    { id: 0, name: 'مرد' },
-    { id: 1, name: 'زن' }
+    { id: 1, name: 'مرد' },
+    { id: 2, name: 'زن' }
   ];
   provinceList: Array<any>;
   countyList: Array<any>;
@@ -40,6 +48,7 @@ export class PatientsListComponent implements OnInit {
     private apiService: ApiService,
     config: NgbModalConfig,
     private fb: FormBuilder,
+    private toastr: ToastrService,
   ) {
     config.backdrop = 'static';
     config.keyboard = false;
@@ -62,15 +71,18 @@ export class PatientsListComponent implements OnInit {
   }
 
   onChangeProvince(event: any) {
+    this.isChangedProvince = true;
     this.provinceCodeSelected = event.target.value;
     this.getListCounty()
   }
 
   onChangeCounty(event: any) {
+    this.isChangedCounty = true;
     this.countyCodeSelected = event.target.value;
   }
 
   onChangeGender(event: any) {
+    this.isChangedGender = true;
     this.genderIdSelected = event.target.value;
   }
 
@@ -132,8 +144,35 @@ export class PatientsListComponent implements OnInit {
     this.dateValueBirthDate.reset()
   }
 
+  clearNationalCode() {
+    this.nationalCode = ''
+  }
+
   buildForm() {
     this.form = this.fb.group({
+      patientID: [],
+      id: [],
+      isActive: [],
+      firstName: [],
+      lastName: [],
+      fatherName: [],
+      nationalCode: [],
+      birthDate: [],
+      mobileNumber: [],
+      genderIx: [],
+      isSitizen: [],
+      provinceIx: [],
+      cityIx: [],
+      insuranceID: [],
+      email: [],
+      description: [],
+      createDate: [],
+      isRegistry: [],
+      address: [],
+    });
+  }
+  buildEditForm() {
+    this.formEdit = this.fb.group({
       patientID: [],
       id: [],
       isActive: [],
@@ -164,8 +203,6 @@ export class PatientsListComponent implements OnInit {
 
   createNewPatient() {
     var insertPatient = new InsertPatientModel();
-    insertPatient.id = '';
-    insertPatient.patientID = 0;
     insertPatient.firstName = this.form.value.firstName;
     insertPatient.lastName = this.form.value.lastName;
     insertPatient.fatherName = this.form.value.fatherName;
@@ -184,8 +221,83 @@ export class PatientsListComponent implements OnInit {
     insertPatient.isRegistry = false;
     insertPatient.address = this.form.value.address;
     this.patientsService.InsertNewPatient(insertPatient).subscribe((q: any) => {
-      console.log(q)
+      if (q.result == true) {
+        this.toastr.success('عملیات با موفقیت انجام شد');
+        this.modalService.dismissAll();
+        this.initial()
+        this.getListPatient()
+      } else {
+        this.toastr.error(q.errorMessages);
+      }
     })
-
   }
+  openEditForm(selectedRow: any) {
+    this.selectedRow = selectedRow
+    this.apiService.GetCounty(0, selectedRow.provinceIx).subscribe((q: any) => {
+      this.countyList = q.content;
+    })
+    this.modalService.open(this.editPatient, { size: 'xl' });
+    this.formEdit = this.fb.group({
+      firstName: [selectedRow.firstName],
+      lastName: [selectedRow.lastName],
+      fatherName: [selectedRow.fatherName],
+      nationalCode: [selectedRow.nationalCode],
+      birthDate: [selectedRow.birthDateShamsi],
+      mobileNumber: [selectedRow.mobileNumber],
+      genderIx: [selectedRow.genderIx],
+      isSitizen: [selectedRow.isSitizen],
+      provinceIx: [selectedRow.provinceIx],
+      cityIx: [selectedRow.cityIx],
+      insuranceID: [selectedRow.insuranceID],
+      email: [selectedRow.email],
+      description: [selectedRow.description],
+      createDate: [selectedRow.createDateShamsi],
+      isRegistry: [selectedRow.isRegistry],
+      address: [selectedRow.address],
+    });
+  }
+
+  saveEditPatient() {
+    var updatePatient = new UpdatePatientModel();
+    updatePatient.firstName = this.formEdit.value.firstName;
+    updatePatient.lastName = this.formEdit.value.lastName;
+    updatePatient.fatherName = this.formEdit.value.fatherName;
+    updatePatient.nationalCode = this.formEdit.value.nationalCode;
+    updatePatient.birthDate = this.selectedBirthDate;
+    updatePatient.mobileNumber = this.formEdit.value.mobileNumber;
+    if (this.isChangedGender == true) {
+      updatePatient.genderIx = +this.genderIdSelected;
+    } else {
+      updatePatient.genderIx = this.selectedRow.genderIx;
+    }
+    if (this.isChangedProvince == true) {
+      updatePatient.genderIx = +this.provinceCodeSelected;
+    } else {
+      updatePatient.genderIx = this.selectedRow.provinceIx;
+    }
+    if (this.isChangedCounty == true) {
+      updatePatient.genderIx = +this.countyCodeSelected;
+    } else {
+      updatePatient.genderIx = this.selectedRow.cityIx;
+    }
+    updatePatient.isSitizen = false;
+    updatePatient.isActive = false;
+    updatePatient.insuranceID = this.formEdit.value.insuranceID;
+    updatePatient.description = this.formEdit.value.description;
+    updatePatient.email = this.formEdit.value.email;
+    updatePatient.createDate = this.selectedCreateDate;
+    updatePatient.isRegistry = false;
+    updatePatient.address = this.formEdit.value.address;
+    this.patientsService.UpdatePatient(updatePatient).subscribe((q: any) => {
+      if (q.result == true) {
+        this.toastr.success('عملیات با موفقیت انجام شد');
+        this.modalService.dismissAll();
+        this.initial()
+        this.getListPatient()
+      } else {
+        this.toastr.error(q.errorMessages);
+      }
+    })
+  }
+
 }

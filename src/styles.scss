@@ -1,9 +1,9 @@
+
 @import 'src/app/keyboard-style.scss';
-/* Importing Bootstrap SCSS file. */
-@import 'bootstrap/scss/bootstrap';
+
 
 * {
-  font-family: 'BYekan' !important;
+  font-family: 'samim' !important;
 }
 
 body {
@@ -17,6 +17,8 @@ body {
 
 .thead-table {
   text-align: center;
+  position: sticky;
+  top: 0
 }
 
 .th-table {
@@ -28,6 +30,7 @@ body {
 .tr-table {
   font-size: 13px;
   font-weight: 600;
+  vertical-align: middle;
 }
 
 .title-name {
@@ -104,3 +107,6 @@ body {
 }
 
 
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

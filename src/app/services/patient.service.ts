@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { AppSetting } from "../app.setting";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from "rxjs";
-import { InsertPatientModel } from "../models/patient.model";
+import { InsertPatientModel, UpdatePatientModel } from "../models/patient.model";
 
 @Injectable({
     providedIn: 'root'
@@ -12,6 +12,7 @@ export class patientsApi {
 
   private _getPatients = this._baseUrl + 'Patient/GetPatients';
   private _createNewPatient = this._baseUrl + 'Patient/CreateNewPatient';
+  private _UpdatePatient = this._baseUrl + 'Patient/UpdatePatient';
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -32,6 +33,10 @@ export class patientsApi {
   
   public InsertNewPatient(insertPatientModel:InsertPatientModel):Observable<any>{
     return this._http.post(this._createNewPatient, insertPatientModel, this.httpOptions);
+  }
+
+  public UpdatePatient(updatePatientModel:UpdatePatientModel):Observable<any>{
+    return this._http.put(this._UpdatePatient, updatePatientModel, this.httpOptions);
   }
 
 }

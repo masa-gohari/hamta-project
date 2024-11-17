@@ -47,6 +47,11 @@
   }
 }
 
+.form-control {
+  font-size: 14px;
+  font-weight: bold;
+}
+
 ::ng-deep ng-persian-datepicker .datepicker-outer-container {
   position: absolute;
   width: 235px;
